@@ -1,421 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Her AI — Meet Your AI Companion</title>
-    <meta name="description" content="Chat with unique AI characters — each with their own personality, story, and voice.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com/3.4.4"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            300: '#c4b5fd',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            700: '#6d28d9',
-                            800: '#5b21b6',
-                            900: '#4c1d95',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        html { scroll-behavior: smooth; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sweet Her AI — AI Companion Chat</title>
+<meta name="description" content="Chat with unique AI characters — each with their own personality, voice, and story. Start for free on Telegram.">
+<link rel="canonical" href="https://sweetherai.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sweet Her AI — AI Companion Chat">
+<meta property="og:description" content="Chat with unique AI characters — each with their own personality, voice, and story.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf8fc;
+  --ink: #1a1025;
+  --mute: #6b5f76;
+  --dim: #9a8da6;
+  --accent: #7c3aed;
+  --accent2: #a855f7;
+  --accent-soft: #ede9fe;
+  --accent-bg: #f5f3ff;
+  --pink: #ec4899;
+  --pink-soft: #fce7f3;
+  --card: #ffffff;
+  --line: #e8e2ef;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --radius: 16px;
+  --max: 1120px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.7 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ---- nav ---- */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,252,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(232,226,239,.6); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; height: 64px; gap: 24px; }
+.logo { display: flex; align-items: baseline; gap: 4px; font: 700 20px/1 var(--sans); letter-spacing: -.3px; white-space: nowrap; }
+.logo em { font: italic 400 24px/1 var(--serif); color: var(--accent); margin-left: 2px; }
+.nav .sp { flex: 1; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--mute); transition: color .2s; }
+.nav-links a:hover { color: var(--ink); }
+.btn-nav { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #fff !important; background: var(--accent); border-radius: 99px; padding: 9px 20px; transition: all .2s; box-shadow: 0 2px 12px rgba(124,58,237,.25); }
+.btn-nav:hover { background: #6d28d9; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(124,58,237,.35); }
+.btn-nav svg { width: 16px; height: 16px; }
+.hamburger { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--ink); }
+.hamburger svg { width: 24px; height: 24px; }
+
+/* ---- hero ---- */
+.hero { position: relative; padding: 120px 24px 80px; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent-bg) 0%, var(--bg) 40%, #fdf2f8 70%, var(--bg) 100%); }
+.hero-orb1 { position: absolute; top: -80px; right: -60px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,.12), transparent 70%); }
+.hero-orb2 { position: absolute; bottom: -120px; left: -100px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(236,72,153,.08), transparent 70%); }
+.hero-inner { position: relative; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-text { max-width: 520px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 99px; padding: 6px 14px; margin-bottom: 20px; }
+.hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: .5; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.2); } }
+.hero h1 { font: 400 52px/1.1 var(--serif); margin: 0 0 20px; letter-spacing: -.5px; }
+.hero h1 b { font-weight: 400; background: linear-gradient(135deg, var(--accent), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-desc { font-size: 18px; color: var(--mute); margin: 0 0 32px; max-width: 440px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn-main { display: inline-flex; align-items: center; gap: 10px; font: 600 16px/1 var(--sans); color: #fff; background: linear-gradient(135deg, var(--accent), #9333ea); border-radius: 99px; padding: 15px 28px; transition: all .25s; box-shadow: 0 6px 24px -4px rgba(124,58,237,.45); }
+.btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 32px -4px rgba(124,58,237,.55); }
+.btn-main svg { width: 20px; height: 20px; }
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; font: 500 15px/1 var(--sans); color: var(--mute); background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 99px; padding: 13px 22px; transition: all .2s; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
+.hero-note { margin-top: 20px; font-size: 13px; color: var(--dim); }
+
+/* ---- chat preview ---- */
+.chat-wrap { position: relative; }
+.chat-phone { background: var(--card); border-radius: 28px; box-shadow: 0 24px 64px -12px rgba(26,16,37,.18), 0 0 0 1px rgba(232,226,239,.5); padding: 0; overflow: hidden; max-width: 380px; margin-left: auto; }
+.chat-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, rgba(245,243,255,.8), rgba(255,255,255,.9)); }
+.chat-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-soft); }
+.chat-name { font-weight: 600; font-size: 15px; }
+.chat-status { font-size: 12px; color: #22c55e; display: flex; align-items: center; gap: 4px; }
+.chat-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+.chat-body { padding: 20px 16px; min-height: 320px; display: flex; flex-direction: column; gap: 12px; background: linear-gradient(180deg, #faf8fc, #f8f5ff); }
+.msg { max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.55; animation: msg-in .5s ease both; }
+@keyframes msg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.msg-her { background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 6px; align-self: flex-start; }
+.msg-you { background: linear-gradient(135deg, var(--accent), #9333ea); color: #fff; border-bottom-right-radius: 6px; align-self: flex-end; }
+.msg-voice { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 6px; align-self: flex-start; padding: 10px 16px; }
+.voice-wave { display: flex; align-items: center; gap: 2px; height: 24px; }
+.voice-wave i { display: block; width: 3px; border-radius: 2px; background: var(--accent); animation: wave 1.2s ease-in-out infinite; }
+.voice-wave i:nth-child(1) { height: 8px; animation-delay: 0s; }
+.voice-wave i:nth-child(2) { height: 16px; animation-delay: .1s; }
+.voice-wave i:nth-child(3) { height: 12px; animation-delay: .2s; }
+.voice-wave i:nth-child(4) { height: 20px; animation-delay: .3s; }
+.voice-wave i:nth-child(5) { height: 10px; animation-delay: .4s; }
+.voice-wave i:nth-child(6) { height: 14px; animation-delay: .15s; }
+.voice-wave i:nth-child(7) { height: 8px; animation-delay: .35s; }
+@keyframes wave { 0%,100% { transform: scaleY(.5); } 50% { transform: scaleY(1); } }
+.voice-dur { font-size: 12px; color: var(--dim); white-space: nowrap; }
+.typing { display: flex; gap: 4px; align-self: flex-start; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; border-bottom-left-radius: 6px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--dim); animation: blink 1.4s ease-in-out infinite; }
+.typing i:nth-child(2) { animation-delay: .2s; }
+.typing i:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+
+/* ---- section common ---- */
+.section { padding: 96px 24px; }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 56px; }
+.section-head h2 { font: 400 38px/1.2 var(--serif); margin: 0 0 14px; }
+.section-head p { font-size: 17px; color: var(--mute); max-width: 520px; margin: 0 auto; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- characters ---- */
+.chars-bg { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.char-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.char-card { position: relative; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; text-align: center; transition: all .3s; cursor: default; }
+.char-card:hover { border-color: rgba(124,58,237,.3); box-shadow: 0 8px 24px -4px rgba(124,58,237,.12); transform: translateY(-4px); }
+.char-img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; border: 3px solid var(--accent-soft); transition: border-color .3s; }
+.char-card:hover .char-img { border-color: var(--accent2); }
+.char-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.char-desc { font-size: 13px; color: var(--mute); line-height: 1.5; }
+.char-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 3px 8px; margin-top: 10px; }
+
+/* ---- features ---- */
+.feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.feat-card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; transition: all .3s; overflow: hidden; }
+.feat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--pink)); opacity: 0; transition: opacity .3s; }
+.feat-card:hover { border-color: rgba(124,58,237,.2); box-shadow: 0 4px 20px -4px rgba(124,58,237,.1); }
+.feat-card:hover::before { opacity: 1; }
+.feat-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 18px; font-size: 22px; }
+.feat-icon.purple { background: var(--accent-soft); }
+.feat-icon.pink { background: var(--pink-soft); }
+.feat-card h3 { font-size: 18px; font-weight: 700; margin: 0 0 8px; }
+.feat-card p { font-size: 14px; color: var(--mute); margin: 0; line-height: 1.65; }
+
+/* ---- how it works ---- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; counter-reset: step; }
+.step { text-align: center; counter-increment: step; }
+.step-num { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--pink)); color: #fff; font-weight: 700; font-size: 18px; display: grid; place-items: center; margin: 0 auto 18px; }
+.step-num::before { content: counter(step); }
+.step h3 { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+.step p { font-size: 14px; color: var(--mute); margin: 0; }
+
+/* ---- pricing ---- */
+.price-bg { background: var(--accent-bg); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 920px; margin: 0 auto; }
+.price-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 28px; text-align: center; transition: all .3s; }
+.price-card.pop { border-color: var(--accent); box-shadow: 0 8px 32px -8px rgba(124,58,237,.2); position: relative; transform: scale(1.04); }
+.price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), var(--pink)); color: #fff; font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 99px; white-space: nowrap; }
+.price-name { font-size: 15px; font-weight: 600; color: var(--mute); margin-bottom: 12px; }
+.price-amount { font: 400 42px/1 var(--serif); margin-bottom: 4px; }
+.price-period { font-size: 13px; color: var(--dim); margin-bottom: 24px; }
+.price-save { display: inline-block; font-size: 12px; font-weight: 600; color: #16a34a; background: #dcfce7; border-radius: 6px; padding: 3px 8px; margin-bottom: 16px; }
+.price-list { list-style: none; padding: 0; margin: 0 0 28px; text-align: left; }
+.price-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--mute); padding: 6px 0; }
+.price-list li::before { content: ''; flex: none; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center/12px no-repeat; }
+.btn-price { display: block; width: 100%; text-align: center; font: 600 15px/1 var(--sans); border-radius: 99px; padding: 14px 0; transition: all .2s; border: none; cursor: pointer; }
+.btn-price.outline { color: var(--accent); background: var(--accent-soft); }
+.btn-price.outline:hover { background: #ddd6fe; }
+.btn-price.solid { color: #fff; background: linear-gradient(135deg, var(--accent), #9333ea); box-shadow: 0 4px 16px -4px rgba(124,58,237,.4); }
+.btn-price.solid:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -4px rgba(124,58,237,.5); }
+
+/* ---- CTA ---- */
+.cta { max-width: var(--max); margin: 0 auto; }
+.cta-box { background: linear-gradient(135deg, var(--accent), #7e22ce 50%, #9333ea); border-radius: 24px; padding: 64px 40px; text-align: center; position: relative; overflow: hidden; }
+.cta-box::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,255,255,.06); }
+.cta-box::after { content: ''; position: absolute; bottom: -40%; left: -10%; width: 400px; height: 400px; border-radius: 50%; background: rgba(236,72,153,.15); }
+.cta-box > * { position: relative; z-index: 1; }
+.cta h2 { font: 400 36px/1.2 var(--serif); color: #fff; margin: 0 0 14px; }
+.cta p { font-size: 17px; color: rgba(255,255,255,.78); margin: 0 0 28px; }
+.btn-cta { display: inline-flex; align-items: center; gap: 10px; font: 600 16px/1 var(--sans); color: var(--accent); background: #fff; border-radius: 99px; padding: 15px 28px; transition: all .25s; box-shadow: 0 6px 24px rgba(0,0,0,.15); }
+.btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,.2); }
+.btn-cta svg { width: 18px; height: 18px; }
+
+/* ---- footer ---- */
+.footer { padding: 40px 24px 48px; border-top: 1px solid var(--line); }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; }
+.footer .sp { flex: 1; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.footer-links a { font-size: 13px; color: var(--mute); transition: color .2s; }
+.footer-links a:hover { color: var(--ink); }
+.footer-copy { width: 100%; text-align: center; font-size: 12px; color: var(--dim); margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+
+/* ---- mobile menu ---- */
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(250,248,252,.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); padding: 16px 24px 20px; z-index: 99; }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; padding: 10px 0; font-size: 15px; font-weight: 500; color: var(--mute); }
+.mobile-menu .btn-nav { display: flex; justify-content: center; margin-top: 8px; }
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-text { max-width: none; }
+  .hero-desc { max-width: none; margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-note { text-align: center; }
+  .chat-phone { max-width: 360px; margin: 0 auto; }
+  .hero h1 { font-size: 38px; }
+  .char-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 24px; }
+  .price-grid { grid-template-columns: 1fr; max-width: 380px; }
+  .price-card.pop { transform: none; }
+  .section { padding: 64px 20px; }
+  .section-head h2 { font-size: 30px; }
+  .cta-box { padding: 48px 24px; }
+  .cta h2 { font-size: 28px; }
+}
+@media (max-width: 480px) {
+  .char-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .char-card { padding: 16px 12px; }
+  .char-img { width: 56px; height: 56px; }
+  .chat-body { min-height: 260px; }
+}
+</style>
 </head>
-<body class="font-sans text-gray-800 bg-white">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="/" class="flex items-center gap-2">
-                    <span class="text-2xl">💜</span>
-                    <span class="text-xl font-bold text-primary-700">Sweet Her AI</span>
-                </a>
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#characters" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">Characters</a>
-                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">Features</a>
-                    <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">Pricing</a>
-                    <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-colors shadow-sm">
-                        Start Chatting
-                    </a>
-                </div>
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Open menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/">Sweet Her <em>AI</em></a>
+    <span class="sp"></span>
+    <div class="nav-links">
+      <a href="#characters">Characters</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://t.me/st_sweetlove_bot" class="btn-nav">
+        Start Chatting
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#characters">Characters</a>
+  <a href="#features">Features</a>
+  <a href="#pricing">Pricing</a>
+  <a href="https://t.me/st_sweetlove_bot" class="btn-nav">Start Chatting</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb1"></div>
+    <div class="hero-orb2"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span> AI Companion Chat</div>
+      <h1>She remembers <b>your story</b></h1>
+      <p class="hero-desc">Chat with AI characters who have their own personalities, voices, and stories. Every conversation picks up where you left off.</p>
+      <div class="hero-actions">
+        <a class="btn-main" href="https://t.me/st_sweetlove_bot">
+          Start for Free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn-ghost" href="#features">How It Works</a>
+      </div>
+      <p class="hero-note">Free to start &middot; Available on Telegram &middot; All characters are AI</p>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-phone">
+        <div class="chat-header">
+          <img class="chat-avatar" src="images/characters/mia.webp" alt="" id="chat-av">
+          <div>
+            <div class="chat-name" id="chat-nm">Mia</div>
+            <div class="chat-status">Online</div>
+          </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-            <div class="px-4 py-4 space-y-3">
-                <a href="#characters" class="block text-sm font-medium text-gray-600 hover:text-primary-600">Characters</a>
-                <a href="#features" class="block text-sm font-medium text-gray-600 hover:text-primary-600">Features</a>
-                <a href="#pricing" class="block text-sm font-medium text-gray-600 hover:text-primary-600">Pricing</a>
-                <a href="https://t.me/st_sweetlove_bot" class="block w-full text-center px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-colors">
-                    Start Chatting
-                </a>
-            </div>
+        <div class="chat-body" id="chat-body">
+          <!-- filled by JS -->
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-        <!-- Gradient background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-purple-50"></div>
-        <div class="absolute top-20 left-1/4 w-72 h-72 bg-primary-200/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-violet-200/20 rounded-full blur-3xl"></div>
+<!-- Characters -->
+<section class="section chars-bg" id="characters">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <h2>Meet the Characters</h2>
+      <p>Each one has her own voice, personality, and stories. Find the one you connect with.</p>
+    </div>
+    <div class="char-grid fade-in">
+      <div class="char-card">
+        <img class="char-img" src="images/characters/mia.webp" alt="Mia">
+        <div class="char-name">Mia</div>
+        <div class="char-desc">Free-spirited artist who paints her feelings</div>
+        <span class="char-tag">Creative</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/aria.webp" alt="Aria">
+        <div class="char-name">Aria</div>
+        <div class="char-desc">Sharp-witted maid with a mysterious past</div>
+        <span class="char-tag">Mysterious</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/claire.webp" alt="Claire">
+        <div class="char-name">Claire</div>
+        <div class="char-desc">University professor who loves a good debate</div>
+        <span class="char-tag">Intellectual</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/grace.webp" alt="Grace">
+        <div class="char-name">Grace</div>
+        <div class="char-desc">Warm-hearted chef who cooks with love</div>
+        <span class="char-tag">Caring</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/serena.webp" alt="Serena">
+        <div class="char-name">Serena</div>
+        <div class="char-desc">Elegant lady with old-world charm</div>
+        <span class="char-tag">Graceful</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/nana.webp" alt="Nana">
+        <div class="char-name">Nana</div>
+        <div class="char-desc">Confident athlete who never backs down</div>
+        <span class="char-tag">Bold</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/faye.webp" alt="Faye">
+        <div class="char-name">Faye</div>
+        <div class="char-desc">Quiet bookworm with a sharp tongue</div>
+        <span class="char-tag">Thoughtful</span>
+      </div>
+      <div class="char-card">
+        <img class="char-img" src="images/characters/remi.webp" alt="Remi">
+        <div class="char-name">Remi</div>
+        <div class="char-desc">Playful streamer who lives for the moment</div>
+        <span class="char-tag">Energetic</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
-                Meet Your
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-violet-500">AI Companion</span>
-            </h1>
-            <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                Chat with unique AI characters — each with their own personality, story, and voice.
-            </p>
-            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-all shadow-lg shadow-primary-200 hover:shadow-xl hover:shadow-primary-300 hover:-translate-y-0.5">
-                    Start Chatting
-                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                    </svg>
-                </a>
-                <a href="#features" class="inline-flex items-center px-6 py-3.5 text-base font-medium text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors">
-                    Learn More
-                </a>
-            </div>
+<!-- Features -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <h2>More Than a Chatbot</h2>
+      <p>A companion who remembers, reacts, and grows with every conversation.</p>
+    </div>
+    <div class="feat-grid fade-in">
+      <div class="feat-card">
+        <div class="feat-icon purple">🎭</div>
+        <h3>Real Personalities</h3>
+        <p>Each character has her own way of talking, reacting, and feeling. She remembers what you said and how your story unfolded.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon pink">🎙️</div>
+        <h3>Voice Messages</h3>
+        <p>Hear her speak in her own voice. Every character sounds different — cheerful, calm, teasing — matching who she is.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon purple">📖</div>
+        <h3>Branching Stories</h3>
+        <p>Your choices shape the relationship. Start a new story, unlock a new side of her, or take the conversation somewhere unexpected.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon pink">📸</div>
+        <h3>Photos &amp; Moments</h3>
+        <p>She shares photos with you as your story unfolds — a selfie, a scene, a moment that brings the conversation to life.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <!-- Floating character avatars -->
-            <div class="mt-16 flex items-center justify-center -space-x-3">
-                <img src="images/characters/mia.webp" alt="Mia" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
-                <img src="images/characters/aria.webp" alt="Aria" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
-                <img src="images/characters/claire.webp" alt="Claire" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
-                <img src="images/characters/grace.webp" alt="Grace" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
-                <img src="images/characters/serena.webp" alt="Serena" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
-                <img src="images/characters/nana.webp" alt="Nana" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
-            </div>
-            <p class="mt-4 text-sm text-gray-500">Join thousands of users chatting every day</p>
-        </div>
-    </section>
+<!-- How it works -->
+<section class="section chars-bg">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <h2>Get Started in Seconds</h2>
+      <p>No download, no sign-up forms. Just open Telegram and start talking.</p>
+    </div>
+    <div class="steps fade-in">
+      <div class="step">
+        <div class="step-num"></div>
+        <h3>Open the Bot</h3>
+        <p>Tap "Start Chatting" to open Sweet Her AI in Telegram. No app to install.</p>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <h3>Choose a Character</h3>
+        <p>Browse the cast and pick someone who catches your eye. Each has multiple stories.</p>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <h3>Start Your Story</h3>
+        <p>The conversation begins. She talks, you reply, and the story goes wherever you take it.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Characters Section -->
-    <section id="characters" class="py-20 sm:py-28 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Choose Your Character</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                    Every character has a unique personality, backstory, and conversation style. Find the one that speaks to you.
-                </p>
-            </div>
+<!-- Pricing -->
+<section class="section price-bg" id="pricing">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <h2>Choose Your Plan</h2>
+      <p>Start free. Upgrade when you want the full experience.</p>
+    </div>
+    <div class="price-grid fade-in">
+      <!-- Free -->
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-amount">$0</div>
+        <div class="price-period">forever</div>
+        <ul class="price-list">
+          <li>5 messages per day</li>
+          <li>All characters</li>
+          <li>Text conversations</li>
+        </ul>
+        <a href="https://t.me/st_sweetlove_bot" class="btn-price outline">Try Free</a>
+      </div>
+      <!-- Monthly -->
+      <div class="price-card pop">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Monthly</div>
+        <div class="price-amount">$14.99</div>
+        <div class="price-period">per month</div>
+        <ul class="price-list">
+          <li>Unlimited messages</li>
+          <li>Voice replies</li>
+          <li>Photos &amp; moments</li>
+          <li>All stories unlocked</li>
+          <li>Priority response</li>
+        </ul>
+        <a href="https://t.me/st_sweetlove_bot" class="btn-price solid">Go Premium</a>
+      </div>
+      <!-- Quarterly -->
+      <div class="price-card">
+        <div class="price-name">Quarterly</div>
+        <div class="price-amount">$19.99</div>
+        <div class="price-period">every 3 months</div>
+        <div class="price-save">Save 56%</div>
+        <ul class="price-list">
+          <li>Everything in Monthly</li>
+          <li>Best value — $6.66/mo</li>
+          <li>Exclusive gifts</li>
+        </ul>
+        <a href="https://t.me/st_sweetlove_bot" class="btn-price outline">Choose Quarterly</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Mia -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
-                            <img src="images/characters/mia.webp" alt="Mia" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Mia</h3>
-                            <p class="text-sm text-gray-600 mt-0.5">The bubbly artist who sees beauty everywhere</p>
-                        </div>
-                    </div>
-                </div>
+<!-- CTA -->
+<section class="section">
+  <div class="cta">
+    <div class="cta-box fade-in">
+      <h2>Ready to Meet Her?</h2>
+      <p>Start a conversation today. She's waiting on Telegram.</p>
+      <a class="btn-cta" href="https://t.me/st_sweetlove_bot">
+        Start Chatting Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 
-                <!-- Aria -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
-                            <img src="images/characters/aria.webp" alt="Aria" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Aria</h3>
-                            <p class="text-sm text-gray-600 mt-0.5">A mysterious maid with a sharp wit</p>
-                        </div>
-                    </div>
-                </div>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="logo" href="/">Sweet Her <em>AI</em></a>
+    <span class="sp"></span>
+    <div class="footer-links">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="mailto:support@sweetherai.com">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Sweet Her AI. All rights reserved. All characters are fictional AI.</div>
+  </div>
+</footer>
 
-                <!-- Claire -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
-                            <img src="images/characters/claire.webp" alt="Claire" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Claire</h3>
-                            <p class="text-sm text-gray-600 mt-0.5">The brilliant professor who loves a good debate</p>
-                        </div>
-                    </div>
-                </div>
+<script>
+// Mobile menu
+var hb = document.getElementById('hamburger');
+var mm = document.getElementById('mobile-menu');
+hb.addEventListener('click', function() { mm.classList.toggle('open'); });
+document.querySelectorAll('#mobile-menu a').forEach(function(a) {
+  a.addEventListener('click', function() { mm.classList.remove('open'); });
+});
 
-                <!-- Grace -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
-                            <img src="images/characters/grace.webp" alt="Grace" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Grace</h3>
-                            <p class="text-sm text-gray-600 mt-0.5">A warm-hearted chef who cooks with love</p>
-                        </div>
-                    </div>
-                </div>
+// Scroll animations
+var fades = document.querySelectorAll('.fade-in');
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+fades.forEach(function(el) { io.observe(el); });
 
-                <!-- Serena -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
-                            <img src="images/characters/serena.webp" alt="Serena" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Serena</h3>
-                            <p class="text-sm text-gray-600 mt-0.5">An elegant lady from ancient times</p>
-                        </div>
-                    </div>
-                </div>
+// Chat demo
+var convos = [
+  {
+    name: 'Mia', avatar: 'mia',
+    msgs: [
+      { who: 'her', text: "Hey! I just finished a new painting today. Want to see it? 🎨" },
+      { who: 'you', text: "Of course! What did you paint?" },
+      { who: 'her', text: "It's the sunset from that rooftop you told me about. I kept thinking about how you described it..." },
+      { who: 'voice', dur: '0:04' },
+    ]
+  },
+  {
+    name: 'Claire', avatar: 'claire',
+    msgs: [
+      { who: 'her', text: "I have a question for you. Do you think people can truly change?" },
+      { who: 'you', text: "That depends. What makes you ask?" },
+      { who: 'her', text: "One of my students wrote something that made me rethink everything I thought I knew..." },
+      { who: 'her', text: "I'll tell you about it. But first — coffee?" },
+    ]
+  },
+  {
+    name: 'Aria', avatar: 'aria',
+    msgs: [
+      { who: 'her', text: "Good evening. Your dinner is ready." },
+      { who: 'you', text: "You didn't have to wait up for me." },
+      { who: 'her', text: "I wasn't waiting. I simply... hadn't finished tidying yet." },
+      { who: 'voice', dur: '0:03' },
+    ]
+  },
+  {
+    name: 'Grace', avatar: 'grace',
+    msgs: [
+      { who: 'her', text: "I tried a new recipe today! Come taste it before it gets cold 😊" },
+      { who: 'you', text: "What did you make this time?" },
+      { who: 'her', text: "Something special — I remembered you said you missed your mom's cooking, so I tried to recreate it." },
+      { who: 'her', text: "It might not be the same, but... I hope it feels like home." },
+    ]
+  }
+];
+var ci = 0;
+var chatBody = document.getElementById('chat-body');
+var chatAv = document.getElementById('chat-av');
+var chatNm = document.getElementById('chat-nm');
 
-                <!-- Nana -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
-                            <img src="images/characters/nana.webp" alt="Nana" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Nana</h3>
-                            <p class="text-sm text-gray-600 mt-0.5">The confident athlete who never backs down</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center px-6 py-3 text-sm font-semibold text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors">
-                    Meet All Characters
-                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 sm:py-28">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Why Sweet Her AI?</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                    More than a chatbot — a companion who remembers, reacts, and grows with you.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                <!-- Feature 1 -->
-                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
-                        🎭
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Unique Personalities</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Each character has their own backstory, personality traits, and conversation style. No two conversations are the same.
-                    </p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
-                        🎙
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Voice Messages</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Hear her voice in every conversation. Each character has a unique voice that matches their personality.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
-                        📖
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Dynamic Stories</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Your choices shape the story. Build relationships, unlock new scenarios, and discover different paths.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
-                        💬
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Always Available</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Chat anytime, anywhere. Your AI companion is always ready to talk, day or night.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 sm:py-28 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Choose Your Plan</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-                    Start for free, upgrade when you're ready.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
-                <!-- Free -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900">Free</h3>
-                    <div class="mt-4 flex items-baseline">
-                        <span class="text-4xl font-bold text-gray-900">$0</span>
-                    </div>
-                    <ul class="mt-8 space-y-4">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">5 messages per day</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">Text conversations</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">All characters available</span>
-                        </li>
-                    </ul>
-                    <a href="https://t.me/st_sweetlove_bot" class="mt-8 block w-full text-center px-6 py-3 text-sm font-semibold text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors">
-                        Try Free
-                    </a>
-                </div>
-
-                <!-- Premium -->
-                <div class="bg-white rounded-2xl p-8 shadow-md border-2 border-primary-500 relative">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full">
-                        Most Popular
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-900">Premium</h3>
-                    <div class="mt-4 flex items-baseline">
-                        <span class="text-4xl font-bold text-gray-900">$4.99</span>
-                        <span class="ml-1.5 text-sm text-gray-500">/week</span>
-                    </div>
-                    <ul class="mt-8 space-y-4">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">Unlimited messages</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">Voice replies</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">Exclusive stories</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-sm text-gray-600">Priority response</span>
-                        </li>
-                    </ul>
-                    <a href="https://t.me/st_sweetlove_bot" class="mt-8 block w-full text-center px-6 py-3 text-sm font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-colors shadow-sm">
-                        Go Premium
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 sm:py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="bg-gradient-to-r from-primary-600 to-violet-600 rounded-3xl px-8 py-14 sm:px-16 sm:py-16 text-white relative overflow-hidden">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-                <div class="relative">
-                    <h2 class="text-3xl sm:text-4xl font-bold">Ready to Meet Her?</h2>
-                    <p class="mt-4 text-lg text-purple-100 max-w-xl mx-auto">
-                        Start a conversation today. Your AI companion is waiting.
-                    </p>
-                    <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center mt-8 px-8 py-3.5 text-base font-semibold text-primary-700 bg-white rounded-full hover:bg-purple-50 transition-colors shadow-lg">
-                        Start Chatting Now
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-2">
-                    <span class="text-xl">💜</span>
-                    <span class="text-lg font-semibold text-white">Sweet Her AI</span>
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="refund.html" class="hover:text-white transition-colors">Refund Policy</a>
-                    <a href="mailto:support@sweetherai.com" class="hover:text-white transition-colors">Contact</a>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-                &copy; 2026 Sweet Her AI. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile menu toggle -->
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
-    </script>
+function showConvo() {
+  var c = convos[ci];
+  chatAv.src = 'images/characters/' + c.avatar + '.webp';
+  chatNm.textContent = c.name;
+  chatBody.innerHTML = '';
+  c.msgs.forEach(function(m, i) {
+    setTimeout(function() {
+      var el;
+      if (m.who === 'voice') {
+        el = document.createElement('div');
+        el.className = 'msg-voice msg';
+        el.innerHTML = '<div class="voice-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="voice-dur">' + m.dur + '</span>';
+      } else {
+        el = document.createElement('div');
+        el.className = 'msg msg-' + (m.who === 'you' ? 'you' : 'her');
+        el.textContent = m.text;
+      }
+      el.style.animationDelay = '0s';
+      chatBody.appendChild(el);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, i * 900 + 300);
+  });
+  ci = (ci + 1) % convos.length;
+  setTimeout(showConvo, convos[ci === 0 ? convos.length - 1 : ci - 1].msgs.length * 900 + 4000);
+}
+showConvo();
+</script>
 
 </body>
 </html>
