@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Her AI — Meet Your AI Companion</title>
+    <meta name="description" content="Chat with unique AI characters — each with their own personality, story, and voice.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.4"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center gap-2">
+                    <span class="text-2xl">💜</span>
+                    <span class="text-xl font-bold text-primary-700">Sweet Her AI</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#characters" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">Characters</a>
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">Features</a>
+                    <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">Pricing</a>
+                    <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-colors shadow-sm">
+                        Start Chatting
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#characters" class="block text-sm font-medium text-gray-600 hover:text-primary-600">Characters</a>
+                <a href="#features" class="block text-sm font-medium text-gray-600 hover:text-primary-600">Features</a>
+                <a href="#pricing" class="block text-sm font-medium text-gray-600 hover:text-primary-600">Pricing</a>
+                <a href="https://t.me/st_sweetlove_bot" class="block w-full text-center px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-colors">
+                    Start Chatting
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+        <!-- Gradient background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-purple-50"></div>
+        <div class="absolute top-20 left-1/4 w-72 h-72 bg-primary-200/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-violet-200/20 rounded-full blur-3xl"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                Meet Your
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-violet-500">AI Companion</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Chat with unique AI characters — each with their own personality, story, and voice.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-all shadow-lg shadow-primary-200 hover:shadow-xl hover:shadow-primary-300 hover:-translate-y-0.5">
+                    Start Chatting
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="#features" class="inline-flex items-center px-6 py-3.5 text-base font-medium text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors">
+                    Learn More
+                </a>
+            </div>
+
+            <!-- Floating character avatars -->
+            <div class="mt-16 flex items-center justify-center -space-x-3">
+                <img src="images/characters/mia.webp" alt="Mia" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
+                <img src="images/characters/aria.webp" alt="Aria" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
+                <img src="images/characters/claire.webp" alt="Claire" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
+                <img src="images/characters/grace.webp" alt="Grace" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
+                <img src="images/characters/serena.webp" alt="Serena" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
+                <img src="images/characters/nana.webp" alt="Nana" class="w-14 h-14 rounded-full border-3 border-white shadow-md object-cover bg-primary-100 ring-2 ring-primary-200">
+            </div>
+            <p class="mt-4 text-sm text-gray-500">Join thousands of users chatting every day</p>
+        </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section id="characters" class="py-20 sm:py-28 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Choose Your Character</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    Every character has a unique personality, backstory, and conversation style. Find the one that speaks to you.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Mia -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
+                            <img src="images/characters/mia.webp" alt="Mia" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Mia</h3>
+                            <p class="text-sm text-gray-600 mt-0.5">The bubbly artist who sees beauty everywhere</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aria -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
+                            <img src="images/characters/aria.webp" alt="Aria" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Aria</h3>
+                            <p class="text-sm text-gray-600 mt-0.5">A mysterious maid with a sharp wit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claire -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
+                            <img src="images/characters/claire.webp" alt="Claire" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Claire</h3>
+                            <p class="text-sm text-gray-600 mt-0.5">The brilliant professor who loves a good debate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grace -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
+                            <img src="images/characters/grace.webp" alt="Grace" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Grace</h3>
+                            <p class="text-sm text-gray-600 mt-0.5">A warm-hearted chef who cooks with love</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serena -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
+                            <img src="images/characters/serena.webp" alt="Serena" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Serena</h3>
+                            <p class="text-sm text-gray-600 mt-0.5">An elegant lady from ancient times</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nana -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary-50 overflow-hidden flex-shrink-0 ring-2 ring-primary-100 group-hover:ring-primary-200 transition-all">
+                            <img src="images/characters/nana.webp" alt="Nana" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Nana</h3>
+                            <p class="text-sm text-gray-600 mt-0.5">The confident athlete who never backs down</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center px-6 py-3 text-sm font-semibold text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors">
+                    Meet All Characters
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 sm:py-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Why Sweet Her AI?</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    More than a chatbot — a companion who remembers, reacts, and grows with you.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Feature 1 -->
+                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
+                        🎭
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Unique Personalities</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Each character has their own backstory, personality traits, and conversation style. No two conversations are the same.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
+                        🎙
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Voice Messages</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Hear her voice in every conversation. Each character has a unique voice that matches their personality.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
+                        📖
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Dynamic Stories</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Your choices shape the story. Build relationships, unlock new scenarios, and discover different paths.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="relative bg-gradient-to-br from-primary-50 to-violet-50 rounded-2xl p-8 border border-primary-100">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-2xl mb-5">
+                        💬
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Always Available</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Chat anytime, anywhere. Your AI companion is always ready to talk, day or night.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 sm:py-28 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Choose Your Plan</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+                    Start for free, upgrade when you're ready.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
+                <!-- Free -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Free</h3>
+                    <div class="mt-4 flex items-baseline">
+                        <span class="text-4xl font-bold text-gray-900">$0</span>
+                    </div>
+                    <ul class="mt-8 space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">5 messages per day</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">Text conversations</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">All characters available</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/st_sweetlove_bot" class="mt-8 block w-full text-center px-6 py-3 text-sm font-semibold text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors">
+                        Try Free
+                    </a>
+                </div>
+
+                <!-- Premium -->
+                <div class="bg-white rounded-2xl p-8 shadow-md border-2 border-primary-500 relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full">
+                        Most Popular
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Premium</h3>
+                    <div class="mt-4 flex items-baseline">
+                        <span class="text-4xl font-bold text-gray-900">$4.99</span>
+                        <span class="ml-1.5 text-sm text-gray-500">/week</span>
+                    </div>
+                    <ul class="mt-8 space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">Unlimited messages</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">Voice replies</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">Exclusive stories</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">Priority response</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/st_sweetlove_bot" class="mt-8 block w-full text-center px-6 py-3 text-sm font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-700 transition-colors shadow-sm">
+                        Go Premium
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 sm:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-r from-primary-600 to-violet-600 rounded-3xl px-8 py-14 sm:px-16 sm:py-16 text-white relative overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+                <div class="relative">
+                    <h2 class="text-3xl sm:text-4xl font-bold">Ready to Meet Her?</h2>
+                    <p class="mt-4 text-lg text-purple-100 max-w-xl mx-auto">
+                        Start a conversation today. Your AI companion is waiting.
+                    </p>
+                    <a href="https://t.me/st_sweetlove_bot" class="inline-flex items-center mt-8 px-8 py-3.5 text-base font-semibold text-primary-700 bg-white rounded-full hover:bg-purple-50 transition-colors shadow-lg">
+                        Start Chatting Now
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">💜</span>
+                    <span class="text-lg font-semibold text-white">Sweet Her AI</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="refund.html" class="hover:text-white transition-colors">Refund Policy</a>
+                    <a href="mailto:support@sweetherai.com" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+                &copy; 2026 Sweet Her AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu toggle -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
